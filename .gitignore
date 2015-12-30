@@ -29,4 +29,4 @@ cabal.sandbox.config
 .ghci
 .module-cache
 .stack-work/
-
+node_modules/
