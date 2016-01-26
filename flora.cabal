@@ -25,9 +25,9 @@ library
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
-        ghc-options:   -Wall -fwarn-tabs -O0
+        ghc-options:   -W -Wall -Werror -fwarn-tabs -O0
     else
-        ghc-options:   -Wall -fwarn-tabs -O2
+        ghc-options:   -W -Wall -Werror -fwarn-tabs -O2
 
     extensions: TemplateHaskell
                 QuasiQuotes
@@ -82,6 +82,7 @@ library
                  , containers
                  , vector
                  , time
+                 , wai
                  -- yesod Could not find module 'Foreign.Store'
                  -- need to find a better way so there is no need
                  -- to include this in the final binary.
@@ -94,14 +95,17 @@ executable         flora
     main-is:           main.hs
     hs-source-dirs:    app
     build-depends:     base, flora
-
-    ghc-options:       -threaded -O2 -rtsopts -with-rtsopts=-N
+    ghc-options:       -W -Wall -Werror -threaded -O -rtsopts -with-rtsopts=-N
 
 test-suite test
     type:              exitcode-stdio-1.0
     main-is:           Spec.hs
     hs-source-dirs:    test
     ghc-options:       -Wall
+
+    other-modules: Handler.CommonSpec
+                 , Handler.HomeSpec
+                 , TestImport
 
     extensions: TemplateHaskell
                 QuasiQuotes
@@ -122,7 +126,7 @@ test-suite test
 
     build-depends: base
                  , flora
-                 , yesod-test
+                 , yesod-test >= 1.5.0.1 && < 1.6
                  , yesod-core
                  , yesod
                  , persistent
@@ -131,6 +135,6 @@ test-suite test
                  , monad-logger
                  , shakespeare
                  , transformers
-                 , hspec
+                 , hspec >= 2.0.0
                  , classy-prelude
                  , classy-prelude-yesod

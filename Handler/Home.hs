@@ -1,9 +1,6 @@
 module Handler.Home where
 
-import Import
-import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3,
-                              withSmallInput)
-
+import           Import
 -- This is a handler function for the GET request method on the HomeR
 -- resource pattern. All of your resource patterns are defined in
 -- config/routes
@@ -13,28 +10,8 @@ import Yesod.Form.Bootstrap3 (BootstrapFormLayout (..), renderBootstrap3,
 -- inclined, or create a single monolithic file.
 getHomeR :: Handler Html
 getHomeR = do
-    (formWidget, formEnctype) <- generateFormPost sampleForm
-    let submission = Nothing :: Maybe (FileInfo, Text)
-        handlerName = "getHomeR" :: Text
-    defaultLayout $ do
-        aDomId <- newIdent
-        setTitle "Welcome To Yesod!"
-        $(widgetFile "homepage")
-
-postHomeR :: Handler Html
-postHomeR = do
-    ((result, formWidget), formEnctype) <- runFormPost sampleForm
-    let handlerName = "postHomeR" :: Text
-        submission = case result of
-            FormSuccess res -> Just res
-            _ -> Nothing
+    master <- getYesod
 
     defaultLayout $ do
-        aDomId <- newIdent
-        setTitle "Welcome To Yesod!"
+        setTitleI MsgTitle
         $(widgetFile "homepage")
-
-sampleForm :: Form (FileInfo, Text)
-sampleForm = renderBootstrap3 BootstrapBasicForm $ (,)
-    <$> fileAFormReq "Choose a file"
-    <*> areq textField (withSmallInput "What's on the file?") Nothing

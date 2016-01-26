@@ -65,14 +65,7 @@ instance Yesod App where
         -- you to use normal widget features in default-layout.
 
         pc <- widgetToPageContent $ do
-            addStylesheet $ StaticR css_bootstrap_css
 
-            -- this is an array of static js files that yesod will
-            -- combine into one single js file and load it via a
-            -- <script> tag.
-            $(combineScripts 'StaticR
-             [ js_bundle_js
-             ])
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 
@@ -161,3 +154,6 @@ unsafeHandler = Unsafe.fakeHandlerGetLogger appLogger
 -- https://github.com/yesodweb/yesod/wiki/Sending-email
 -- https://github.com/yesodweb/yesod/wiki/Serve-static-files-from-a-separate-domain
 -- https://github.com/yesodweb/yesod/wiki/i18n-messages-in-the-scaffolding
+
+-- Add I18N support
+mkMessage "App" "messages" "en"
