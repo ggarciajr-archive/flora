@@ -1,0 +1,112 @@
+/*
+ * -- MENU STYLES --
+ * I want to customize how my .pure-menu looks at the top of the page
+ */
+.home-menu {
+  padding: 0.5em;
+  text-align: center;
+  box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+  background: #2d3e50;
+  text-align: left;
+  .pure-menu-heading {
+    i,
+    span {
+      color: white;
+      display: inline-table;
+      font-weight: 400;
+      font-size: 120%;
+    }
+    i {
+      margin-right: 0.2em;
+    }
+  }
+  .pure-menu-selected a {
+    color: white;
+  }
+  a {
+    color: #6FBEF3;
+  }
+  li a:hover,
+  li a:focus {
+    background: none;
+    border: none;
+    color: #AECFE5;
+  }
+  .custom-toggle {
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: 9px;
+    right: 13px;
+    display: none;
+    @media (max-width: 47.999em) {
+      display: block;
+    }
+    &.x {
+      .bar {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        &:first-child {
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    .bar {
+      background-color: white;
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 100px;
+      position: absolute;
+      top: 22px;
+      right: 12px;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      transition: all 0.5s;
+      &:first-child {
+        -webkit-transform: translateY(-6px);
+        -moz-transform: translateY(-6px);
+        -ms-transform: translateY(-6px);
+        transform: translateY(-6px);
+      }
+    }
+  }
+  &.pure-menu.pure-menu-fixed {
+    /* Fixed menus normally have a border at the bottom. */
+    border-bottom: none;
+    /* I need a higher z-index here because of the scroll-over effect. */
+    z-index: 4;
+  }
+  .menu-bottom {
+    .pure-menu-link {
+      line-height: 1.9em;
+    }
+    @media (max-width: 47.999em) {
+      &.visible {
+        background-color: #2d3e50;
+        border-top: 1px solid #eee;
+        box-sizing: border-box;
+        display: block;
+        left: 0;
+        position: fixed;
+        top: 65px;
+        width: 100%;
+        z-index: 100;
+        -webkit-transform: translateX(0);
+        -moz-transform: translateX(0);
+        -ms-transform: translateX(0);
+        transform: translateX(0);
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        transition: all 0.5s;
+      }
+    }
+  }
+}

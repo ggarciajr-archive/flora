@@ -1,0 +1,91 @@
+<div class="header" id="header"
+     data-title=_{MsgTitle}
+     data-home=_{MsgNavigationHome}
+     data-try-free="_{MsgNavigationTryFree}"
+     data-sign-up="_{MsgNavigationSignUp}"
+     data-sign-in="_{MsgNavigationSignIn}">
+  <!--- navigation will be rendered here -->
+
+<div class="splash-container">
+  <div class="splash">
+    <h1 class="splash-head">_{MsgSplashHead}
+    <p class="splash-subhead">_{MsgSplashSubHead}
+    <p>
+      <a href="#" class="pure-button primary">_{MsgSplashButton}
+
+<div class="content-wrapper">
+  <div class="content">
+    <h2 class="content-head is-center">_{MsgFeaturesHead}
+
+    <div class="pure-g">
+      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+          <i class="fa fa-clock-o">
+          _{MsgFeaturesTimeTrackingHead}
+        <p>
+          _{MsgFeaturesTimeTrackingContent}
+
+      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+          <i class="fa fa-file-pdf-o">
+          _{MsgFeaturesReportingHead}
+        <p>
+          _{MsgFeaturesReportingContent}
+
+      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+          <i class="fa fa-dashboard">
+          _{MsgFeaturesDashboardHead}
+        <p>
+          _{MsgFeaturesDashboardContent}
+
+      <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+        <h3 class="content-subhead">
+          <i class="fa fa-github">
+          _{MsgFeaturesOpenSourcedHead}
+        <p>
+          _{MsgFeaturesOpenSourcedContent}
+
+  <div class="ribbon is-center l-box-lrg pure-g">
+    <div class="pure-u-1">
+      <h1 class="content-head content-head-ribbon">_{MsgRibbonHead}
+      <p>
+        _{MsgRibbonContent}
+      <p>
+        <a href="#" class="pure-button primary">_{MsgRibbonTryForFree}
+
+  <div class="content">
+    <h2 class="content-head is-center">_{MsgMoreInfoHead}
+    <div class="pure-g">
+      <div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+        <form class="pure-form pure-form-stacked">
+          <fieldset>
+            <label for="name">_{MsgMoreInfoFormName}
+            <input id="name" type="text" placeholder="_{MsgMoreInfoFormNamePlaceHolder}">
+            <label for="email">_{MsgMoreInfoFormEmail}
+            <input id="email" type="email" placeholder="_{MsgMoreInfoFormEmailPlaceHolder}">
+            <label for="message">_{MsgMoreInfoFormMessage}
+            <textarea id="message" type="message" placeholder="_{MsgMoreInfoFormMessagePlaceHolder}">
+            <button type="submit" class="pure-button">_{MsgMoreInfoFormSend}
+
+      <div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+        <h4>_{MsgMoreInfoContributionHead}
+        <p>
+          _{MsgMoreInfoContributionContent}
+
+        <h4 class="space-top-3">_{MsgMoreInfoDonationsHead}
+        <p>
+          _{MsgMoreInfoDonationsContent}
+
+        <div class="l-box-lrg is-center pure-u-1 donation">
+          <a class="pure-button">
+            _{MsgMoreInfoDonationsButton20}
+          <a class="pure-button">
+            _{MsgMoreInfoDonationsButton30}
+          <a class="pure-button">
+            _{MsgMoreInfoDonationsButton40}
+          <a class="pure-button">
+            _{MsgMoreInfoDonationsButton50}
+
+  <div class="footer l-box is-center">
+    #{appCopyright $ appSettings master}

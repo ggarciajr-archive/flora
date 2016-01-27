@@ -65,7 +65,21 @@ instance Yesod App where
         -- you to use normal widget features in default-layout.
 
         pc <- widgetToPageContent $ do
+            -- add CDN-hosted
+            addStylesheetRemote "https:////maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+            addStylesheetRemote "https://fonts.googleapis.com/css?family=Roboto:400,300"
 
+            -- Takes a list of css files and generate one big css file.
+            $(combineStylesheets 'StaticR
+             [ css_style_css
+             ])
+
+            -- this is an array of static js files that yesod will
+            -- combine into one single js file and load it via a
+            -- <script> tag.
+            $(combineScripts 'StaticR
+             [ js_bundle_js
+             ])
             $(widgetFile "default-layout")
         withUrlRenderer $(hamletFile "templates/default-layout-wrapper.hamlet")
 
