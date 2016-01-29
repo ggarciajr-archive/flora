@@ -4,7 +4,7 @@ import TestImport
 
 spec :: Spec
 spec = withApp $
-    it "loads the index and checks it looks right" $ do
+    it "loads the index and checks if it looks right" $ do
         get HomeR
         statusIs 200
 

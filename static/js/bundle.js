@@ -58,14 +58,23 @@
 
 	var _navigation2 = _interopRequireDefault(_navigation);
 
+	var _dataset = __webpack_require__(160);
+
+	var _dataset2 = _interopRequireDefault(_dataset);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(function () {
 	  'use strict';
+	  // makes Webpack to compile the scss
 
-	  __webpack_require__(160);
+	  __webpack_require__(161);
+
 	  var navigationContainer = document.getElementById('header');
-	  _reactDom2.default.render(_react2.default.createElement(_navigation2.default, { language: navigationContainer.dataset }), navigationContainer);
+	  var language = _dataset2.default.filterAndReduceDataset(navigationContainer.dataset, "lang");
+	  var links = _dataset2.default.filterAndReduceDataset(navigationContainer.dataset, "link");
+
+	  _reactDom2.default.render(_react2.default.createElement(_navigation2.default, { language: language, links: links }), navigationContainer);
 	})();
 
 /***/ },
@@ -19730,7 +19739,7 @@
 	            { className: 'pure-menu' },
 	            React.createElement(
 	              'a',
-	              { className: 'pure-menu-heading', href: '#' },
+	              { className: 'pure-menu-heading', href: this.props.links.home },
 	              React.createElement('i', { className: 'fa fa-clock-o' }),
 	              this.props.language.title
 	            ),
@@ -19756,7 +19765,7 @@
 	                { className: 'pure-menu-item', 'pure-menu-selected': true },
 	                React.createElement(
 	                  'a',
-	                  { href: '#', className: 'pure-menu-link' },
+	                  { href: this.props.links.home, className: 'pure-menu-link' },
 	                  this.props.language.home
 	                )
 	              ),
@@ -19765,7 +19774,7 @@
 	                { className: 'pure-menu-item' },
 	                React.createElement(
 	                  'a',
-	                  { href: '#', className: 'pure-menu-link' },
+	                  { href: this.props.links.tryFree, className: 'pure-menu-link' },
 	                  this.props.language.tryFree
 	                )
 	              ),
@@ -19804,12 +19813,64 @@
 	    signUp: React.PropTypes.string.isRequired,
 	    signIn: React.PropTypes.string.isRequired,
 	    tryFree: React.PropTypes.string.isRequired
+	  }).isRequired,
+	  links: React.PropTypes.shape({
+	    home: React.PropTypes.string.isRequired,
+	    tryFree: React.PropTypes.string.isRequired
 	  }).isRequired
 	};
 	exports.default = Navigation;
 
 /***/ },
 /* 160 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var DataSetUtils = function () {
+	  function DataSetUtils() {
+	    _classCallCheck(this, DataSetUtils);
+	  }
+
+	  _createClass(DataSetUtils, null, [{
+	    key: 'dataSetReducer',
+	    value: function dataSetReducer(dataset, prefix) {
+	      return function (acc, k) {
+	        var origKey = k.replace(prefix, '');
+	        var key = origKey[0].toLowerCase() + origKey.slice(1);
+	        acc[key] = dataset[k];
+	        return acc;
+	      };
+	    }
+	  }, {
+	    key: 'filterDataset',
+	    value: function filterDataset(dataset, prefix) {
+	      return Object.keys(dataset).filter(function (s) {
+	        return s.startsWith(prefix);
+	      });
+	    }
+	  }, {
+	    key: 'filterAndReduceDataset',
+	    value: function filterAndReduceDataset(dataset, prefix) {
+	      return this.filterDataset(dataset, prefix).reduce(this.dataSetReducer(dataset, prefix), {});
+	    }
+	  }]);
+
+	  return DataSetUtils;
+	}();
+
+	exports.default = DataSetUtils;
+
+/***/ },
+/* 161 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

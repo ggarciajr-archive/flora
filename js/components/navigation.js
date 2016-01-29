@@ -22,7 +22,7 @@ class Navigation extends React.Component {
     <div className="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
       <div className="pure-u-1 pure-u-md-1-3">
         <div className="pure-menu">
-          <a className="pure-menu-heading" href="#">
+          <a className="pure-menu-heading" href={this.props.links.home}>
             <i className="fa fa-clock-o"></i>
             {this.props.language.title}
           </a>
@@ -36,10 +36,10 @@ class Navigation extends React.Component {
         <div className="pure-menu pure-menu-horizontal">
           <ul className="pure-menu-list">
             <li className="pure-menu-item" pure-menu-selected>
-              <a href="#" className="pure-menu-link">{this.props.language.home}</a>
+              <a href={this.props.links.home} className="pure-menu-link">{this.props.language.home}</a>
             </li>
             <li className="pure-menu-item">
-              <a href="#" className="pure-menu-link">{this.props.language.tryFree}</a>
+              <a href={this.props.links.tryFree} className="pure-menu-link">{this.props.language.tryFree}</a>
             </li>
             <li className="pure-menu-item">
               <a href="#" className="pure-menu-link">{this.props.language.signUp}</a>
@@ -61,6 +61,10 @@ Navigation.propTypes = {
     home: React.PropTypes.string.isRequired,
     signUp: React.PropTypes.string.isRequired,
     signIn: React.PropTypes.string.isRequired,
+    tryFree: React.PropTypes.string.isRequired
+  }).isRequired,
+  links: React.PropTypes.shape({
+    home: React.PropTypes.string.isRequired,
     tryFree: React.PropTypes.string.isRequired
   }).isRequired
 };

@@ -1,9 +1,11 @@
 <div class="header" id="header"
-     data-title=_{MsgTitle}
-     data-home=_{MsgNavigationHome}
-     data-try-free="_{MsgNavigationTryFree}"
-     data-sign-up="_{MsgNavigationSignUp}"
-     data-sign-in="_{MsgNavigationSignIn}">
+     data-lang-title=_{MsgTitle}
+     data-lang-home=_{MsgNavigationHome}
+     data-lang-try-free="_{MsgNavigationTryFree}"
+     data-lang-sign-up="_{MsgNavigationSignUp}"
+     data-lang-sign-in="_{MsgNavigationSignIn}"
+     data-link-home="@{HomeR}"
+     data-link-try-free="@{FreeR}">
   <!--- navigation will be rendered here -->
 
 <div class="splash-container">
@@ -52,7 +54,7 @@
       <p>
         _{MsgRibbonContent}
       <p>
-        <a href="#" class="pure-button primary">_{MsgRibbonTryForFree}
+        <a href=@{FreeR} class="pure-button primary">_{MsgRibbonTryForFree}
 
   <div class="content">
     <h2 class="content-head is-center">_{MsgMoreInfoHead}
