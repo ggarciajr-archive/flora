@@ -1,0 +1,30 @@
+machine:
+  environment:
+    PGUSER: postgres
+    PGDATABASE: circle_test
+    PGPORT: 5432
+    PGHOST: localhost
+
+dependencies:
+  cache_directories:
+    # Frontend app javascript modules
+    - "js/node_modules"
+    # Backend app haskell modules
+    - "~/.stack"
+
+  pre:
+    # Install stack
+    - wget -q -O- https://s3.amazonaws.com/download.fpcomplete.com/ubuntu/fpco.key | sudo apt-key add -
+    - echo 'deb http://download.fpcomplete.com/ubuntu/precise stable main' | sudo tee /etc/apt/sources.list.d/fpco.list
+    - sudo apt-get update && sudo apt-get install stack -y
+
+  override:
+    # Build javascript dependencies
+    - cd js && npm install --save-dev
+    # Build haskell dependencies
+    - stack setup && stack build --test --only-dependencies
+
+test:
+  override:
+    - cd js && npm test
+    - stack test

@@ -1,2 +1,2 @@
 database:
-  database: flora_test
+  database: "_env:PGDATABASE:flora_test"

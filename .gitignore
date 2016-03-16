@@ -30,3 +30,6 @@ cabal.sandbox.config
 .module-cache
 .stack-work/
 node_modules/
+.envrc
+bin/
+docker-compose.yml
