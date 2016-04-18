@@ -23,6 +23,7 @@ library
                      Handler.Common
                      Handler.Home
                      Handler.Free
+                     Helpers.Tokens
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT
@@ -84,6 +85,7 @@ library
                  , vector
                  , time
                  , wai
+                 , random
                  -- yesod Could not find module 'Foreign.Store'
                  -- need to find a better way so there is no need
                  -- to include this in the final binary.
@@ -98,6 +100,24 @@ executable         flora
     build-depends:     base, flora
     ghc-options:       -W -Wall -Werror -threaded -O -rtsopts -with-rtsopts=-N
 
+    extensions: TemplateHaskell
+                QuasiQuotes
+                OverloadedStrings
+                NoImplicitPrelude
+                CPP
+                MultiParamTypeClasses
+                TypeFamilies
+                GADTs
+                GeneralizedNewtypeDeriving
+                FlexibleContexts
+                FlexibleInstances
+                EmptyDataDecls
+                NoMonomorphismRestriction
+                DeriveDataTypeable
+                ViewPatterns
+                TupleSections
+                RecordWildCards
+
 test-suite test
     type:              exitcode-stdio-1.0
     main-is:           Spec.hs
@@ -106,6 +126,7 @@ test-suite test
 
     other-modules: Handler.CommonSpec
                  , Handler.HomeSpec
+                 , Helpers.TokensSpec
                  , TestImport
 
     extensions: TemplateHaskell
@@ -139,3 +160,4 @@ test-suite test
                  , hspec >= 2.0.0
                  , classy-prelude
                  , classy-prelude-yesod
+                 , random
