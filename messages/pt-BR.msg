@@ -40,3 +40,7 @@ MoreInfoDonationsButton20: Doe 20.00
 MoreInfoDonationsButton30: Doe 30.00
 MoreInfoDonationsButton40: Doe 40.00
 MoreInfoDonationsButton50: Doe 50.00
+
+404Title: Página Não Encontrada
+404SubTitle: Não há nada para ser visto aqui.
+404Message: Por favor use o menu acima para encontrar o que você está procurando.

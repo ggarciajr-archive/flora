@@ -40,3 +40,7 @@ MoreInfoDonationsButton20: Donate 20.00
 MoreInfoDonationsButton30: Donate 30.00
 MoreInfoDonationsButton40: Donate 40.00
 MoreInfoDonationsButton50: Donate 50.00
+
+404Title: Page Not Found
+404SubTitle: There is nothing to see here.
+404Message: Please use the navigation bar above to find what you're looking for.

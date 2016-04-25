@@ -6,7 +6,7 @@ import Import
 
 getFreeR :: Handler Html
 getFreeR = do
-    master <- getYesod
+    --master <- getYesod
 
     defaultLayout $ do
         setTitleI MsgTitle

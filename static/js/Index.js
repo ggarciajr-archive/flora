@@ -54,11 +54,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _navigation = __webpack_require__(159);
+	var _navigation = __webpack_require__(278);
 
 	var _navigation2 = _interopRequireDefault(_navigation);
 
-	var _dataset = __webpack_require__(160);
+	var _dataset = __webpack_require__(159);
 
 	var _dataset2 = _interopRequireDefault(_dataset);
 
@@ -68,7 +68,7 @@
 	  'use strict';
 	  // makes Webpack to compile the scss
 
-	  __webpack_require__(161);
+	  __webpack_require__(279);
 
 	  var navigationContainer = document.getElementById('header');
 	  var language = _dataset2.default.filterAndReduceDataset(navigationContainer.dataset, "lang");
@@ -19674,6 +19674,209 @@
 
 /***/ },
 /* 159 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	/* Class to transform data-* attributes from HTML tags     */
+	/* and transform them into an appropriate format to be fed */
+	/* React components.                                       */
+
+	var DataSetUtils = function () {
+	  function DataSetUtils() {
+	    _classCallCheck(this, DataSetUtils);
+	  }
+
+	  _createClass(DataSetUtils, null, [{
+	    key: 'normalizeKey',
+
+	    /* dataset attributes become camel case strings - i.e:  */
+	    /* data-lang-foo becomes langFoo. Since we dont' care   */
+	    /* about the prefix because we create fully structured  */
+	    /* json objects, this function is used to remove        */
+	    /* the prefix and change the first letter of the key    */
+	    /* to lower case.                                       */
+	    value: function normalizeKey(prefix, key) {
+	      var normalized = '';
+
+	      if (key && key.trim().length > 0) {
+	        var origKey = key.replace(prefix, '');
+	        normalized = origKey[0].toLowerCase() + origKey.slice(1);
+	      }
+
+	      return normalized;
+	    }
+
+	    /* Given a dataset object and a prefix, returns a function */
+	    /* that returns an object containing only the keys -       */
+	    /* without the prefix - that have the prefix.              */
+	    /* Example:                                                */
+	    /* ds = { FooBar: "a", FooBaz: "b", QuuxBar: "c" }         */
+	    /* dataSetReducer(ds,"foo")                                */
+	    /* will return                                             */
+	    /* ds = { bar: "a", baz: "b" }                             */
+
+	  }, {
+	    key: 'dataSetReducer',
+	    value: function dataSetReducer(dataset, prefix) {
+	      return function (acc, k) {
+	        var key = normalizeKey(prefix, k);
+	        acc[key] = dataset[k];
+	        return acc;
+	      };
+	    }
+	  }, {
+	    key: 'filterDataset',
+
+	    /* Given a tag with several data-* attributes with different */
+	    /* prefixes - i.e: data-lang-x, data-lang-y, data-link-z -   */
+	    /* and a prefix, returns an array containing only the data-* */
+	    /* attributes having the given prefix.                       */
+	    value: function filterDataset(dataset, prefix) {
+	      return Object.keys(dataset).filter(function (s) {
+	        return s.startsWith(prefix);
+	      });
+	    }
+	  }, {
+	    key: 'filterAndReduceDataset',
+	    value: function filterAndReduceDataset(dataset, prefix) {
+	      return this.filterDataset(dataset, prefix).reduce(this.dataSetReducer(dataset, prefix), {});
+	    }
+	  }]);
+
+	  return DataSetUtils;
+	}();
+
+	exports.default = DataSetUtils;
+
+/***/ },
+/* 160 */,
+/* 161 */,
+/* 162 */,
+/* 163 */,
+/* 164 */,
+/* 165 */,
+/* 166 */,
+/* 167 */,
+/* 168 */,
+/* 169 */,
+/* 170 */,
+/* 171 */,
+/* 172 */,
+/* 173 */,
+/* 174 */,
+/* 175 */,
+/* 176 */,
+/* 177 */,
+/* 178 */,
+/* 179 */,
+/* 180 */,
+/* 181 */,
+/* 182 */,
+/* 183 */,
+/* 184 */,
+/* 185 */,
+/* 186 */,
+/* 187 */,
+/* 188 */,
+/* 189 */,
+/* 190 */,
+/* 191 */,
+/* 192 */,
+/* 193 */,
+/* 194 */,
+/* 195 */,
+/* 196 */,
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */,
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */,
+/* 218 */,
+/* 219 */,
+/* 220 */,
+/* 221 */,
+/* 222 */,
+/* 223 */,
+/* 224 */,
+/* 225 */,
+/* 226 */,
+/* 227 */,
+/* 228 */,
+/* 229 */,
+/* 230 */,
+/* 231 */,
+/* 232 */,
+/* 233 */,
+/* 234 */,
+/* 235 */,
+/* 236 */,
+/* 237 */,
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */,
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */,
+/* 252 */,
+/* 253 */,
+/* 254 */,
+/* 255 */,
+/* 256 */,
+/* 257 */,
+/* 258 */,
+/* 259 */,
+/* 260 */,
+/* 261 */,
+/* 262 */,
+/* 263 */,
+/* 264 */,
+/* 265 */,
+/* 266 */,
+/* 267 */,
+/* 268 */,
+/* 269 */,
+/* 270 */,
+/* 271 */,
+/* 272 */,
+/* 273 */,
+/* 274 */,
+/* 275 */,
+/* 276 */,
+/* 277 */,
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19822,94 +20025,7 @@
 	exports.default = Navigation;
 
 /***/ },
-/* 160 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	/* Class to transform data-* attributes from HTML tags     */
-	/* and transform them into an appropriate format to feed   */
-	/* React components.                                       */
-
-	var DataSetUtils = function () {
-	  function DataSetUtils() {
-	    _classCallCheck(this, DataSetUtils);
-	  }
-
-	  _createClass(DataSetUtils, null, [{
-	    key: 'normalizeKey',
-
-	    /* dataset attributes become camel case strings - i.e:  */
-	    /* data-lang-foo becomes langFoo. Since we dont' care   */
-	    /* about the prefix because we create fully structured  */
-	    /* json objects, this function is used to remove        */
-	    /* the prefix and change the first letter of the key    */
-	    /* to lower case.                                       */
-	    value: function normalizeKey(prefix, key) {
-	      var normalized = '';
-
-	      if (key && key.trim().length > 0) {
-	        var origKey = key.replace(prefix, '');
-	        normalized = origKey[0].toLowerCase() + origKey.slice(1);
-	      }
-
-	      return normalized;
-	    }
-
-	    /* Given a dataset object and a prefix, returns a function */
-	    /* that returns an object containing only the keys -       */
-	    /* without the prefix - that have the prefix.              */
-	    /* Example:                                                */
-	    /* ds = { FooBar: "a", FooBaz: "b", QuuxBar: "c" }         */
-	    /* dataSetReducer(ds,"foo")                                */
-	    /* will return                                             */
-	    /* ds = { bar: "a", baz: "b" }                             */
-
-	  }, {
-	    key: 'dataSetReducer',
-	    value: function dataSetReducer(dataset, prefix) {
-	      var _this = this;
-
-	      return function (acc, k) {
-	        var key = _this.normalizeKey(prefix, k);
-	        acc[key] = dataset[k];
-	        return acc;
-	      };
-	    }
-	  }, {
-	    key: 'filterDataset',
-
-	    /* Given a tag with several data-* attributes with different */
-	    /* prefixes - i.e: data-lang-x, data-lang-y, data-link-z -   */
-	    /* and a prefix, returns an array containing only the data-* */
-	    /* attributes having the given prefix.                       */
-	    value: function filterDataset(dataset, prefix) {
-	      return Object.keys(dataset).filter(function (s) {
-	        return s.startsWith(prefix);
-	      });
-	    }
-	  }, {
-	    key: 'filterAndReduceDataset',
-	    value: function filterAndReduceDataset(dataset, prefix) {
-	      return this.filterDataset(dataset, prefix).reduce(this.dataSetReducer(dataset, prefix), {});
-	    }
-	  }]);
-
-	  return DataSetUtils;
-	}();
-
-	exports.default = DataSetUtils;
-
-/***/ },
-/* 161 */
+/* 279 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

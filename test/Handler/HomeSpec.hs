@@ -8,7 +8,6 @@ spec = withApp $
         get HomeR
         statusIs 200
 
-        -- more debugging printBody
         htmlCount ".header" 1
         htmlCount ".splash" 1
         htmlCount ".splash" 1

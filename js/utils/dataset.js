@@ -1,5 +1,5 @@
 /* Class to transform data-* attributes from HTML tags     */
-/* and transform them into an appropriate format to be fed */
+/* and transform them into an appropriate format to feed   */
 /* React components.                                       */
 class DataSetUtils {
   /* dataset attributes become camel case strings - i.e:  */
@@ -29,7 +29,7 @@ class DataSetUtils {
   /* ds = { bar: "a", baz: "b" }                             */
   static dataSetReducer(dataset, prefix) {
     return (acc, k) => {
-      const key = normalizeKey(prefix, k);
+      const key = this.normalizeKey(prefix, k);
       acc[key] = dataset[k];
       return acc;
     }

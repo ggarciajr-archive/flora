@@ -2104,6 +2104,29 @@ label {
   .splash-head {
     font-size: 300%; } }
 
+.app-container {
+  left: 0;
+  position: relative;
+  top: 100px;
+  width: 100%;
+  z-index: 1; }
+
+.footer-fixed {
+  background: #000;
+  bottom: 0;
+  position: fixed;
+  width: 100%; }
+
+.error-box {
+  margin: 40px; }
+  .error-box h2 {
+    font-size: 3em; }
+  .error-box h3,
+  .error-box p {
+    margin: 0; }
+  .error-box i {
+    color: red; }
+
 /* This is the class used for the footer */
 .footer {
   background: #111; }

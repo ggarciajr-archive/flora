@@ -1,0 +1,32 @@
+//
+// -- APP STYLES --
+// General styles that are applied to everything but the landing page.
+//
+.app-container {
+  left: 0;
+  position: relative;
+  top: 100px;
+  // The following styles are required for the "scroll-over" effect
+  width: 100%;
+  z-index: 1;
+}
+
+.footer-fixed {
+  background: #000;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.error-box {
+  margin: 40px;
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h3,
+  p { margin: 0; }
+
+  i { color: red; }
+}
