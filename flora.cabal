@@ -27,6 +27,7 @@ library
                      Handler.Home
                      Handler.Free
                      Helpers.Tokens
+                     Queries.FreeSession
 
     if flag(dev) || flag(library-only)
         cpp-options:   -DDEVELOPMENT

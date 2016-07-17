@@ -5,6 +5,8 @@ module Handler.Free (
 
 import Import
 
+import Queries.FreeSession
+
 -- | Generates a new free session identifier and redirects the user to
 -- \/free\/generated-identifier
 getFreeR :: Handler Html
@@ -20,9 +22,10 @@ getFreeR = do
 getFreeSessionR :: FreeSessionUid -> Handler Html
 getFreeSessionR freeSessionIdent = do
   --master <- getYesod
-  when (freeSessionIdent == FreeSessionUid("invalid")) $
-    notFound
-
-  defaultLayout $ do
-      setTitleI MsgTitle
-      $(widgetFile "free")
+  sessionData <- runDB $ fetchFreeSessionProjectUser freeSessionIdent
+  case sessionData of
+    Just _ ->
+      defaultLayout $ do
+        setTitleI MsgTitle
+        $(widgetFile "free")
+    Nothing -> notFound
