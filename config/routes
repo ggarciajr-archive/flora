@@ -5,4 +5,5 @@
 
 / HomeR GET
 
-/free                 FreeR GET
+/free                   FreeR GET
+/free/#FreeSessionUid   FreeSessionR GET
