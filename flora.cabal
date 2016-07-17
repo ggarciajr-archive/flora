@@ -19,6 +19,8 @@ library
                      Import.NoFoundation
                      Model
                      Model.FreeSession
+                     Model.Project
+                     Model.User
                      Settings
                      Settings.StaticFiles
                      Handler.Common
@@ -91,6 +93,7 @@ library
                  -- need to find a better way so there is no need
                  -- to include this in the final binary.
                  , foreign-store
+                 , esqueleto
 
 executable         flora
     if flag(library-only)

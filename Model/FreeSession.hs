@@ -8,6 +8,8 @@ an id type.
 module Model.FreeSession where
 
 import ClassyPrelude
+import Database.Persist.TH
+import Model.User
 import Yesod
 
 -- | The FreeSessionUid type is used to have stronged typed URIs.
@@ -16,3 +18,12 @@ import Yesod
 -- an UserId for example.
 newtype FreeSessionUid = FreeSessionUid { unFreeSessionUid :: Text }
   deriving (Show, Read, Eq, PathPiece, PersistField)
+
+-- | Defines the FreeSession entity.
+share [mkPersist sqlSettings] [persistLowerCase|
+FreeSession sql=free_sessions
+  ident                 FreeSessionUid       sqltype=text
+  userId                UserId               reference=users   sqltype=int4
+  createdAt             UTCTime              default=now()
+  deriving Show Eq Typeable
+|]
